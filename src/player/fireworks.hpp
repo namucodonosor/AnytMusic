@@ -33,7 +33,7 @@ protected:
 
 public:
     explicit Fireworks(QQuickItem *parent = nullptr): QQuickItem(parent), m_renderer(new FireworksRenderer),
-        m_filterPrefix(PonyPlayer::getAssetsDir() + u"/filters"_qs), m_filterJsons() {
+        m_filterPrefix(AnytMusic::getAssetsDir() + u"/filters"_qs), m_filterJsons() {
         QDir filterDir(m_filterPrefix);
         for(auto && filename : filterDir.entryList({"*.json"})) {
             QFile file = filterDir.filePath(filename);

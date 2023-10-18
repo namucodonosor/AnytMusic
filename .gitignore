@@ -39,3 +39,6 @@ app
 config/find_dependence.cmake
 config/user.json
 docs/html
+
+.kdev4
+AnytMusic.kdev4

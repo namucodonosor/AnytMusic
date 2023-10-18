@@ -14,7 +14,7 @@
  * @dnName: 数据库名
  */
 PonyKVConnect::PonyKVConnect(const QString &dbName) {
-    QString home = PonyPlayer::getHome();
+    QString home = AnytMusic::getHome();
     bool done = qputenv("PONYPATH", home.toUtf8());
     if(done) {
         qDebug() << "Env set!" << home;

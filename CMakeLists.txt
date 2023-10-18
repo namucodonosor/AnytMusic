@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(PonyPlayer VERSION 0.0.1 LANGUAGES C CXX)
+project(AnytMusic VERSION 0.0.1 LANGUAGES C CXX)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -16,7 +16,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror=return-type -Wno-unused-function -Wno-unused-parameter")
 
 set(FFMPEG_LIBS avformat avcodec avutil swresample swscale)
-include(config/find_dependence.cmake)
+#include(config/find_dependence.cmake)
 
 find_package(Qt6 COMPONENTS
         Core

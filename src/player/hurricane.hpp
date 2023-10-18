@@ -133,7 +133,7 @@ signals:
      * 打开文件结果
      * @param b 是否成功
      */
-    void openFileResult(PonyPlayer::OpenFileResultType result, QPrivateSignal);
+    void openFileResult(AnytMusic::OpenFileResultType result, QPrivateSignal);
 
     /**
      * 视频播放进度由于手动调整发送改变
@@ -454,8 +454,8 @@ private slots:
         emit stateChanged();
     };
 
-    void slotOpenFileResult(PonyPlayer::OpenFileResultType result) {
-        if (result != PonyPlayer::OpenFileResultType::FAILED) {
+    void slotOpenFileResult(AnytMusic::OpenFileResultType result) {
+        if (result != AnytMusic::OpenFileResultType::FAILED) {
             state = PAUSED;
             track = 0;
         } else {

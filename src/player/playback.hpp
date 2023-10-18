@@ -112,7 +112,7 @@ private:
 public:
     Playback(Demuxer *demuxer, QObject *parent) : QObject(nullptr), m_demuxer(demuxer) {
         m_affinityThread = new QThread;
-        m_affinityThread->setObjectName(PonyPlayer::PLAYBACK);
+        m_affinityThread->setObjectName(AnytMusic::PLAYBACK);
         this->moveToThread(m_affinityThread);
         connect(this, &Playback::startWork, this, &Playback::onWork);
         connect(this, &Playback::stopWork, this, [this] { this->m_audioSink->stop(); });
@@ -144,7 +144,7 @@ public:
         connect(this, &Playback::clearRingBuffer, this, [this] { this->m_audioSink->clear(); });
         connect(m_affinityThread, &QThread::started, [this] {
             // 在 Playback 线程上初始化
-            this->m_audioSink = new PonyAudioSink(PonyPlayer::DEFAULT_AUDIO_FORMAT);
+            this->m_audioSink = new PonyAudioSink(AnytMusic::DEFAULT_AUDIO_FORMAT);
             connect(m_audioSink, &PonyAudioSink::signalDeviceSwitched, this, [this] {
                 emit signalDeviceSwitched();
                 emit requestResynchronization(!this->m_audioSink->isBlock(), true);

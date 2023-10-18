@@ -152,7 +152,7 @@ public:
     }
 };
 
-namespace PonyPlayer {
+namespace AnytMusic {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wold-style-cast"
     const PonySampleFormat Unknown = PonySampleFormat::of<void>(paNonInterleaved, AV_SAMPLE_FMT_NONE);

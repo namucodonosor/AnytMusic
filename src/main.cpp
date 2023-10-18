@@ -13,7 +13,7 @@
 #include <csignal>
 
 
-namespace PonyPlayer {
+namespace AnytMusic {
     QStringList programArguments;
 
     int reportErrorMain(int argc, char *argv[]) {
@@ -57,7 +57,7 @@ namespace PonyPlayer {
         }
         arguments.append("--crash-report");
         arguments.append("--log-file");
-        arguments.append(PonyPlayer::getLogFile());
+        arguments.append(AnytMusic::getLogFile());
         arguments.append("--message");
         arguments.append(message.c_str());
         QProcess process(nullptr);
@@ -68,7 +68,7 @@ namespace PonyPlayer {
     }
 
     void signalHandler( int signum ) {
-        PonyPlayer::startReporterProcess("SIGNAL: " + std::to_string(signum));
+        AnytMusic::startReporterProcess("SIGNAL: " + std::to_string(signum));
         exit(signum);
     }
 }
@@ -79,13 +79,13 @@ namespace PonyPlayer {
 int main(int argc, char *argv[]) {
     for(int i=0;i<argc;++i) {
         if (strcmp(argv[i], "--crash-report") == 0) {
-            return PonyPlayer::reportErrorMain(argc, argv);
+            return AnytMusic::reportErrorMain(argc, argv);
         }
-        PonyPlayer::programArguments.append(argv[i]);
+        AnytMusic::programArguments.append(argv[i]);
     }
 
-    signal(SIGABRT, PonyPlayer::signalHandler);
-    signal(SIGSEGV, PonyPlayer::signalHandler);
+    signal(SIGABRT, AnytMusic::signalHandler);
+    signal(SIGSEGV, AnytMusic::signalHandler);
 
     QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
     QSurfaceFormat format;
@@ -105,13 +105,13 @@ int main(int argc, char *argv[]) {
     qmlRegisterType<LyricSentence>("LyricSentence", 1, 0, "LyricSentence");
     qRegisterMetaType<PlayListItem *>("PlayListItem");
     qmlRegisterUncreatableMetaObject(
-            PonyPlayer::staticMetaObject, // meta object created by Q_NAMESPACE macro
+            AnytMusic::staticMetaObject, // meta object created by Q_NAMESPACE macro
             "ponyplayer.ns",                // import statement (can be any string)
             1, 0,                          // major and minor version of the import
-            "PonyPlayerNS",                 // name in QML (does not have to match C++ name)
+            "AnytMusicNS",                 // name in QML (does not have to match C++ name)
             "Error: only enums"            // error in case someone tries to create a MyNamespace object
     );
-    qInstallMessageHandler(PonyPlayer::logMessageHandler);
+    qInstallMessageHandler(AnytMusic::logMessageHandler);
 
     const QUrl url(u"qrc:/view/main.qml"_qs);
     QQmlApplicationEngine engine;

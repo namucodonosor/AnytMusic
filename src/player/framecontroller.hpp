@@ -22,7 +22,7 @@ private:
 public:
     explicit FrameController([[maybe_unused]] QObject *parent) : QObject(nullptr) {
         m_affinityThread = new QThread;
-        m_affinityThread->setObjectName(PonyPlayer::FRAME);
+        m_affinityThread->setObjectName(AnytMusic::FRAME);
         this->moveToThread(m_affinityThread);
         connect(m_affinityThread, &QThread::started, this, &FrameController::initOnThread);
         m_affinityThread->start();
@@ -39,8 +39,8 @@ private slots:
         connect(this, &FrameController::signalDecoderOpenFile, m_demuxer, &Demuxer::openFile);
         // WARNING: BLOCKING_QUEUED_CONNECTION!!!
         connect(this, &FrameController::signalDecoderSeek, m_demuxer, &Demuxer::seek, Qt::BlockingQueuedConnection);
-        connect(m_demuxer, &Demuxer::openFileResult, this, [this](PonyPlayer::OpenFileResultType result) {
-            if (result != PonyPlayer::OpenFileResultType::FAILED) {
+        connect(m_demuxer, &Demuxer::openFileResult, this, [this](AnytMusic::OpenFileResultType result) {
+            if (result != AnytMusic::OpenFileResultType::FAILED) {
                 m_playback->setDesiredFormat(m_demuxer->getInputFormat());
                 m_demuxer->setOutputFormat(m_playback->getDeviceFormat());
                 m_demuxer->start();
@@ -246,7 +246,7 @@ signals:
 
     void signalDeviceSwitched();
 
-    void openFileResult(PonyPlayer::OpenFileResultType result);
+    void openFileResult(AnytMusic::OpenFileResultType result);
 
     void playbackStateChanged(bool isPlaying);
 
