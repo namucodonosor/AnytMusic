@@ -16,7 +16,7 @@
 #endif
 
 
-namespace PonyPlayer {
+namespace AnytMusic {
     inline QString getAssetsDir() {
 #ifdef __APPLE__
         CFURLRef resourcesDirUrl = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());

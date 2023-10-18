@@ -48,7 +48,7 @@ public:
     }
 
     Logger() {
-        auto home = PonyPlayer::getHome();
+        auto home = AnytMusic::getHome();
         QDir dir(home);
         dir.mkdir("log");
         dir.cd("log");
@@ -133,10 +133,10 @@ static Logger* getLoggerInstance() {
     return &logger;
 }
 
-void PonyPlayer::logMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
+void AnytMusic::logMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
     getLoggerInstance()->log(type, context, msg);
 }
 
-QString PonyPlayer::getLogFile() {
+QString AnytMusic::getLogFile() {
     return getLoggerInstance()->getLogFile();
 }

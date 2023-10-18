@@ -13,7 +13,7 @@
 #include <utility>
 #include <filesystem>
 #include "platform.hpp"
-constexpr const static char* ISSUE_URL = "https://github.com/SCUT-SE-ProjectMP/PonyPlayer/issues";
+constexpr const static char* ISSUE_URL = "https://github.com/SCUT-SE-ProjectMP/AnytMusic/issues";
 
 class CrashReporter : public QObject {
     Q_OBJECT

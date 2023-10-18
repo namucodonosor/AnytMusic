@@ -1,22 +1,15 @@
-# PonyPlayer
+# AnytMusic
 
-PonyPlayer is a cross-platform media player based on Qt6 and FFmpeg. This project aims to deliver a lightweighted and customizable player with modern technologies.
+Another YouTube Music client. Cross-platform and based on Qt6 and FFmpeg. Originally forked from [PonyPlayer](https://github.com/PonyPlayer/PonyPlayer)
 
-PonyPlayer has the following features below:
-* High performance render engine "Hurricane" based on OpenGL
-* A full-featured and easy-to-use media library
-* Speed settings for both video and audio
-* Brightness/Contrast/Saturation settings and multiple video filters available
-* Frame preview
-* Native experience on macOS with QML
+Objective of this project:
+* Have a native desktop client for YT Music
+* Learn modern C++ and QT
+* Improve my coding experience
 
-Compared with those large player projects like VLC or mpv, PonyPlayer is much more handy for developers to modify and create their own builds. Feel free to make your contribution here!
+Feel free to use and/or modify.
 
-
-
-## Usage
-
-We recommend you use `Clion` as development IDE.
+The documentation below is left mostly untouched from the original repo.
 
 ### Requirements
 
@@ -86,44 +79,4 @@ src         --  the source code of the project, which can be divided into some m
 | Utils     | Utility, such as wrapper for platform-depended methods and logger. |
 | View      | View module, which integrates into QML and implements most of the UI. The UI is written in QML, and simple logic is implemented in JavaScript. |
 | Wave      | Wave module. Similar to Player module, it integrates into Qt and OpenGL and registers a Qucikitem which drawn circular music “oscillograph”. |
-
-
-
-## Screenshoot
-
-![UI](README.assets/UI.jpeg)
-
-![Installer](README.assets/Installer.jpeg)
-
-## License
-
-**Copyright (c) 2022 PonyPlayer Team**
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-Thrid party license and warrantty are included in `LICENSE.RTF` .
-
-
-
-## Documents
-
-https://ponyplayer.github.io/PonyPlayer/
-
-https://github.com/PonyPlayer/PonyPlayer/tree/main/docs
 

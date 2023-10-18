@@ -40,7 +40,7 @@ _Pragma("GCC diagnostic pop") \
 #define ILLEGAL_STATE(msg) throw std::runtime_error(std::string("Illegal State Exception: ").append(msg).append(" : " FILE_AND_LINE))
 #endif
 
-namespace PonyPlayer {
+namespace AnytMusic {
     using PonyThread = const char*;
     constexpr PonyThread PLAYBACK = "PlaybackThread";
     constexpr PonyThread DECODER  = "DecoderThread";
@@ -69,11 +69,11 @@ namespace PonyPlayer {
     inline QString getHome() {
         QString home = QDir::homePath();
 #ifdef Q_OS_MAC
-        home += "/Library/Containers/PonyPlayer";
+        home += "/Library/Containers/AnytMusic";
 #elif defined(Q_OS_WIN32)
-        home += "/AppData/Local/PonyPlayer";
+        home += "/AppData/Local/AnytMusic";
 #elif defined(Q_OS_LINUX)
-        home += "/.PonyPlayer";
+        home += "/.AnytMusic";
 #endif
         return home;
     }
@@ -81,7 +81,7 @@ namespace PonyPlayer {
 
 
 
-#define PONY_THREAD_ANNOTATION(...) static_assert([]{using namespace PonyPlayer; return checkThreadType(__VA_ARGS__);}());
+#define PONY_THREAD_ANNOTATION(...) static_assert([]{using namespace AnytMusic; return checkThreadType(__VA_ARGS__);}());
 
 /**
  * 仅在指定线程调用可以保证线程安全

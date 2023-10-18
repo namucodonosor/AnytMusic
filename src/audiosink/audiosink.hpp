@@ -194,7 +194,7 @@ private:
                 "Can not open audio stream!"
         )
         const PaStreamInfo *info = Pa_GetStreamInfo(m_stream);
-        m_deviceFormat = PonyAudioFormat(PonyPlayer::Int16, static_cast<int>(info->sampleRate),
+        m_deviceFormat = PonyAudioFormat(AnytMusic::Int16, static_cast<int>(info->sampleRate),
                                          param->channelCount);
         ASSERT_PA_OK(Pa_SetStreamFinishedCallback(m_stream, [](void *userData) {
             static_cast<PonyAudioSink *>(userData)->m_paStreamFinishedCallback();
@@ -236,7 +236,7 @@ public:
      */
     explicit PonyAudioSink(PonyAudioFormat format) : m_volume(0.5), m_pitch(1.0), m_state(PlaybackState::STOPPED),
                                             m_format(std::move(format)),
-                                            m_deviceFormat(PonyPlayer::Unknown, 0, 0), m_speedFactor(1.0) {
+                                            m_deviceFormat(AnytMusic::Unknown, 0, 0), m_speedFactor(1.0) {
 
 
         paStreamLock.lock();
@@ -368,7 +368,7 @@ public:
      */
     bool write(const char *buf, qint32 origLen) {
         int len = 0;
-        if (m_format.getSampleFormat() != PonyPlayer::Int16) {
+        if (m_format.getSampleFormat() != AnytMusic::Int16) {
             throw std::runtime_error("Only support Int16!");
         }
         if (origLen % m_format.getBytesPerSampleChannels() == 0) {
@@ -536,7 +536,7 @@ public:
 
     void setFormat(const PonyAudioFormat &format) {
         std::unique_lock lock(paStreamLock);
-        m_format = {PonyPlayer::Int16, format.getSampleRate(), format.getChannelCount()};
+        m_format = {AnytMusic::Int16, format.getSampleRate(), format.getChannelCount()};
         lock.unlock();
         restartStream(nullptr);
     }

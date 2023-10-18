@@ -26,7 +26,7 @@ public:
 
     explicit Demuxer(QObject *parent) : QObject(nullptr) {
         m_affinityThread = new QThread;
-        m_affinityThread->setObjectName(PonyPlayer::DECODER);
+        m_affinityThread->setObjectName(AnytMusic::DECODER);
         this->moveToThread(m_affinityThread);
         m_affinityThread->start();
     }
@@ -160,7 +160,7 @@ public:
         if (m_worker) {
             return m_worker->getAudioInputFormat();
         } else {
-            return PonyPlayer::DEFAULT_AUDIO_FORMAT;
+            return AnytMusic::DEFAULT_AUDIO_FORMAT;
         }
 
     }
@@ -213,10 +213,10 @@ public slots:
         std::unique_lock lock(m_workerLock);
         if (m_worker) {
             qWarning() << "Already open file:" << m_worker->filename.c_str();
-            emit openFileResult(PonyPlayer::OpenFileResultType::FAILED, QPrivateSignal());
+            emit openFileResult(AnytMusic::OpenFileResultType::FAILED, QPrivateSignal());
             return;
         }
-        PonyPlayer::OpenFileResultType result;
+        AnytMusic::OpenFileResultType result;
         try {
             m_forward = new DecodeDispatcher(fn, result, DEFAULT_STREAM_INDEX, DEFAULT_STREAM_INDEX, this);
             m_backward = new ReverseDecodeDispatcher(fn, this);
@@ -294,6 +294,6 @@ public slots:
 
 signals:
 
-    void openFileResult(PonyPlayer::OpenFileResultType result, QPrivateSignal);
+    void openFileResult(AnytMusic::OpenFileResultType result, QPrivateSignal);
 };
 

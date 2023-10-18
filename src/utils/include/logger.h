@@ -6,7 +6,7 @@
 #define SOFTWAREENGINEERING_LOGGER_H
 #include <QtCore>
 
-namespace PonyPlayer {
+namespace AnytMusic {
     void logMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg);
     QString getLogFile();
 }

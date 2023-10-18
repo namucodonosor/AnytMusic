@@ -7,10 +7,10 @@ AppDir:
   path: {APP_DIR}
   app_info:
     id: net
-    name: PonyPlayer
-    icon: ponyicon
+    name: AnytMusic
+    icon: anytmusicicon
     version: {VERSION}
-    exec: usr/bin/PonyPlayer
+    exec: usr/bin/AnytMusic
     exec_args: $@
   apt:
     arch:

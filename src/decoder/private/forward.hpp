@@ -90,7 +90,7 @@ template<> class DecoderImpl<Audio>: public DecoderImpl<Common> {
     SwrContext *swrCtx = nullptr;
     uint8_t *audioOutBuf = nullptr;
     AVFrame * sampleFrameBuf = nullptr;
-    PonyAudioFormat targetFmt = PonyAudioFormat(PonyPlayer::Int16, 44100, 2);
+    PonyAudioFormat targetFmt = PonyAudioFormat(AnytMusic::Int16, 44100, 2);
 
 public:
     DecoderImpl(AVStream *vs, TwinsBlockQueue<AVFrame *> *queue) : DecoderImpl<Common>(vs, queue) {
@@ -127,7 +127,7 @@ public:
     }
 
     PonyAudioFormat getInputFormat() override {
-        return {PonyPlayer::valueOf(codecCtx->sample_fmt), codecCtx->sample_rate, codecCtx->channels};
+        return {AnytMusic::valueOf(codecCtx->sample_fmt), codecCtx->sample_rate, codecCtx->channels};
     }
 
     void setOutputFormat(const PonyAudioFormat& format) override {

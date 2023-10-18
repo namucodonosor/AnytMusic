@@ -27,7 +27,7 @@ INCLUDE_FFMPEG_END
 
 //#define IGNORE_VIDEO_FRAME
 
-namespace PonyPlayer {
+namespace AnytMusic {
     Q_NAMESPACE
     enum OpenFileResultType {
         FAILED,        ///< 打开文件失败
@@ -171,7 +171,7 @@ private:
 public:
     explicit DecodeDispatcher(
             const std::string &fn,
-            PonyPlayer::OpenFileResultType &result,
+            AnytMusic::OpenFileResultType &result,
             StreamIndex audioStreamIndex = DEFAULT_STREAM_INDEX,
             StreamIndex videoStreamIndex = DEFAULT_STREAM_INDEX,
             QObject *parent = nullptr
@@ -190,7 +190,7 @@ public:
 
         // audio
         if (description.m_audioStreamsIndex.empty()) {
-            result = PonyPlayer::OpenFileResultType::FAILED;
+            result = AnytMusic::OpenFileResultType::FAILED;
             throw std::runtime_error("Cannot find audio stream.");
         }
         if (m_audioStreamIndex ==
@@ -207,9 +207,9 @@ public:
             if (!description.m_videoStreamsIndex.empty())
                 m_videoStreamIndex = description.m_videoStreamsIndex.front();
             videoDecoder = new VirtualVideoDecoder(description.audioDuration);
-            result = PonyPlayer::OpenFileResultType::AUDIO;
+            result = AnytMusic::OpenFileResultType::AUDIO;
         } else {
-            result = PonyPlayer::OpenFileResultType::VIDEO;
+            result = AnytMusic::OpenFileResultType::VIDEO;
             if (m_videoStreamIndex ==
                 DEFAULT_STREAM_INDEX) { m_videoStreamIndex = description.m_videoStreamsIndex.front(); }
             videoDecoder = new DecoderImpl<Video>(fmtCtx->streams[m_videoStreamIndex], videoQueue);

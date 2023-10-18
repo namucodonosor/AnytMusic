@@ -1,4 +1,4 @@
-﻿set(CPP_SOURCES
+set(CPP_SOURCES
     main.cpp
     hotloader.hpp
     cursor.hpp
@@ -40,7 +40,7 @@ target_link_libraries(${PROJECT_NAME}
     wave
 )
 include(gtest.cmake)
-project(PonyPlayer)
+project(AnytMusic)
 
 
 
